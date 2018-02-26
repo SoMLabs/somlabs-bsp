@@ -1,0 +1,34 @@
+= SoMLabs BSP
+
+Yocto Project based BSP for SoMLabs boards:
+http://wiki.somlabs.com/index.php?title=VisionSOM-6ULL
+
+SoMLabs BSP is based on FSL Community BSP. See also:
+https://github.com/Freescale/fsl-community-bsp-platform
+http://freescale.github.io/
+
+To get the BSP you need to have `repo` installed and use it as:
+
+Install the `repo` utility:
+
+[source,console]
+$: mkdir ~/bin
+$: curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+$: chmod a+x ~/bin/repo
+
+Download the BSP source:
+
+[source,console]
+$: PATH=${PATH}:~/bin
+$: mkdir somlabs-bsp
+$: cd somlabs-bsp
+$: repo init -u https://github.com/SoMLabs/somlabs-bsp -b rocko
+$: repo sync
+
+At the end of the commands you have every metadata you need to start work with.
+
+To start a simple image build:
+
+[source,console]
+$: MACHINE=visionsom6ull DISTRO=somlabs-linux EULA=1 source setup-environment build
+$: bitbake lab-image
