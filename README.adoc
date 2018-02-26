@@ -31,4 +31,16 @@ To start a simple image build:
 
 [source,console]
 $: MACHINE=visionsom6ull DISTRO=somlabs-linux EULA=1 source setup-environment build
+
+Add meta-layers:
+[source,console]
+$: bitbake-layers add-layer ../sources/meta-somlabs
+$: bitbake-layers add-layer ../sources/meta-openembedded/meta-python
+$: bitbake-layers add-layer ../sources/meta-openembedded/meta-networking
+
+(You can also edit `conf/bblayers.conf` by hand.)
+
+Buid image:
+
+[source,console]
 $: bitbake lab-image
